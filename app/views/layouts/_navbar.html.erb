@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+  <a class="navbar-brand mr-1 ml-3" href="/"><%= image_tag "bellina-logo.png", class:"img-fluid" %></a>
+
+  <!--button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <i class="fa fa-bars"></i>
+  </button-->
+
+  <!-- Navbar Search -->
+  <div class="ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    
+  </div>
+
+  <!-- Navbar -->
+  <ul class="navbar-nav ml-auto ml-md-0">
+    <li class="nav-item dropdown no-arrow mx-1">
+      <% if user_signed_in? %>
+        <%= link_to current_user.email, edit_user_registration_path, :class => "nav-link" %>
+      <% end %>
+
+
+    </li>
+    <li class="nav-item dropdown no-arrow mx-1">
+      <% if user_signed_in? %>
+        <%= link_to fa_icon('sign-out'), destroy_user_session_path, :method => :delete, :class => "nav-link" %>
+      <% end %>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=payments_path%>">Pago</a>
+  </li>
+  <li class="breadcrumb-item active">Crear Pago</li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Crear Pago</div>
+    <div class="card-body">
+      <%= render 'form', payment: @payment %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $('#client_select').val(<%=@id.to_i%>).trigger('change.select2');
+    $('#deuda-total').text((<%=@debt.to_i%>).format(2, 3, '.', ','));
+    $("#payment_datepicker").datepicker().datepicker("setDate", new Date());
+  });
+</script>

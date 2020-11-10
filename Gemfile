@@ -5,9 +5,13 @@ ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
-group :development, :production do
-  # Use postgresql as the database for Active Record
-  gem 'pg', '>= 0.18', '< 2.0'
+#group :development, :test do
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem "pg"
+  gem "rails_12factor"
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -50,8 +54,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
-  gem 'sqlite3'
 end
 
 group :test do
@@ -60,8 +62,46 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Jquery y bootstrap
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap-datepicker-rails'
+
+
+# Select 2
+gem "select2-rails"
+
+# Datatable
+gem 'jquery-datatables'
+gem 'ajax-datatables-rails'
+gem 'kaminari'
+
+# font-awesome
+gem "font-awesome-rails"
+
+# Mensajes de error
+gem 'toastr-rails'
+
+gem 'cocoon'
+
+gem 'barby'
+
+# Seguridad
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
+# Chart JS
+#gem 'chart-js-rails'
+
+gem 'chartjs-ror'
+
+gem 'chunky_png'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

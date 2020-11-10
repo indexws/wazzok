@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+  </head>
+  <body onload='number_pages'>
+		<div id="content">
+			<center><%= @footwear.article %> - <%= @footwear.size %></center>
+		  <center><%= image_tag wicked_pdf_asset_base64('barcode.png') %></center>
+    	<center><%= @footwear.sku %></center>
+    </div>
+  </body>
+</html>

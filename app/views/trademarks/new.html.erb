@@ -1,0 +1,18 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=providers_path%>">Marcas</a>
+  </li>
+  <li class="breadcrumb-item active">Crear Marca</li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Crear Marca</div>
+    <div class="card-body">
+      <%= render 'form', trademark: @trademark %>
+    </div>
+  </div>
+</div>

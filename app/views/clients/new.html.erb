@@ -1,0 +1,18 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=clients_path%>">Clientes</a>
+  </li>
+  <li class="breadcrumb-item active">Crear Cliente</li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Crear Cliente</div>
+    <div class="card-body">
+      <%= render 'form', client: @client %>
+    </div>
+  </div>
+</div>

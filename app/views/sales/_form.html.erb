@@ -1,0 +1,41 @@
+<%= form_with(model: sale, local: true) do |f| %>
+  <% if sale.errors.any? %>
+    <script type="text/javascript">
+      <% sale.errors.full_messages.each do |message| %>
+        toastr['error']('<%= message %>');
+      <% end %>
+    </script>
+  <% end %>
+  <div class="field row">
+    <div class="col-sm-4">
+      <%= f.label :date_sale%>
+      <%= f.text_field :date_sale, :class => "datepicker", :value=>"#{f.object.date_sale.strftime("%d/%m/%Y") unless f.object.new_record?}"%>
+    </div>
+    <div class="col-sm-6">
+      <%= f.label :client_id%>
+      <%= f.collection_select :client_id, Client.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field", id: "client_select"} %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label "n", :style=>"color:white;"%>
+      <%= link_to_add_association (fa_icon "plus"), f, :sale_details, data: { association_insertion_node: '.sale_details', association_insertion_method: :append }, class: "btn btn-primary btn-block" %>
+    </div>
+    <hr>
+
+  </div>
+  <br>
+  <div class="sale_details">
+    <%= f.fields_for :sale_details do |sale_details| %>
+        <%= render 'sale_detail_fields', :f => sale_details %>
+    <% end %>
+  </div>
+
+  <hr>
+  <div class="col-sm-12" style="text-align: right; font-weight: 600;">
+    <p>Total = $ <span id="total">0,00</span></p>
+    
+  </div>
+  <div class="text-center col-md-12">
+    <%= link_to 'Volver', :back, class: "btn btn-primary" %>
+    <%= f.submit %>
+  </div>
+<% end %>

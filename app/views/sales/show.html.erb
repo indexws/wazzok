@@ -1,0 +1,63 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=sales_path%>">Ventas</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @sale.id %></li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">
+    	<div class="row">
+    		<div class="col-md-6">Venta Nº: <%= @sale.id %></div>
+    		<div clas="col-md-6" style="text-align: right;width: 50%; padding-right:15px">Estado: <%= @sale.state%></div>
+    	</div>
+	 	</div>
+    <div class="card-body row">
+    	<div class="col-md-6"> <strong> Fecha: </strong> <%= @sale.date_sale %></div>
+		 	<div class="col-md-6" style="text-align: right;"><strong>Cliente: </strong><a href="/clients/<%= @sale.client.id%>"><%= @sale.client %></a></div>
+		 	<div class="col-md-12" style="margin-top: 25px;"></div>
+		 	<div class="col-md-12">
+
+		 		<table class="table">
+		 			<thead>
+	          <tr>
+	            <th>Cantidad</th>
+	            <th>Artículo</th>
+	            <th>Detalle</th>
+	            <th>Precio</th>
+	          </tr>
+	        </thead>
+		      </tbody>
+			    <% @sale.sale_details.each do |sale_details| %>
+            <tr>
+              <td><%= sale_details.count%></td>
+            <% if sale_details.footwear.nil? %>
+			        <td></td>
+              <td></td>
+            <% else %>
+              <td><%= sale_details.footwear.article%></td>
+              <td><%= sale_details.footwear.short_description%></td>
+            <% end %>
+              <td><%= number_to_currency(sale_details.real_price)%></td>
+			      </tr>
+					<% end %>
+					</tbody>
+				</table>
+
+  		</div>
+
+			<div class="col-sm-12" style="text-align: right; font-weight: 600;">
+		    <p>Total = <span><%=number_to_currency(@sale_details.sum(:real_price))%></span></p>
+  		</div>
+  		<div class="text-center col-md-12">
+  			<%= link_to 'Volver', :back, class: "btn btn-primary" %>
+		  	<%= link_to 'Editar', edit_sale_path(@sale), class: "btn btn-primary" %>
+		  	<%= link_to 'Pagar', new_payment_path+"/"+@sale.client.id.to_s, class: "btn btn-success" %>
+		  </div>
+  	</div>
+	</div>
+</div>

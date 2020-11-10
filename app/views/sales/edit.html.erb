@@ -1,0 +1,19 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=sales_path%>">Ventas</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Venta</li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Venta</div>
+    <div class="card-body">
+      <%= render 'form', sale: @sale %>
+    </div>
+  </div>
+</div>
+

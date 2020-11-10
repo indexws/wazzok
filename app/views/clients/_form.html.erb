@@ -1,0 +1,61 @@
+<%= form_with(model: client, local: true) do |form| %>
+  <% if client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% client.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :dni %>
+    <%= form.number_field :dni %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fullname %>
+    <%= form.text_field :fullname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mail %>
+    <%= form.text_field :mail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount_old%>
+    <div class="input-icon">
+      <%= form.number_field :amount_old, :placeholder => "0.00" %>
+      <i>$</i>
+    </div>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.check_box :avanzar %>
+    <span style="font-style: italic;font-size: 0.8rem;"> Si el cliente cuenta con créidto avanzar tílde la casilla.</span>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= link_to 'Volver', :back, class: "btn btn-primary" %>
+    <%= form.submit %>
+  </div>
+<% end %>

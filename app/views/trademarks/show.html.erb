@@ -1,0 +1,30 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=providers_path%>">Marcas</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @trademark.name %></li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @trademark.name %></div>
+    <div class="card-body">
+    	<p>
+		  <strong>Nombre:</strong>
+		  <%= @trademark.name %>
+		</p>
+
+		<p>
+		  <strong>Proveedor:</strong>
+		  <%= @trademark.provider %>
+		</p>
+		<div class="text-center">
+      <%= link_to 'Volver', :back, class: "btn btn-primary" %>
+			<%= link_to 'Editar', edit_trademark_path(@trademark), class: "btn btn-primary" %>
+		</div>
+    </div>
+  </div>
+</div>

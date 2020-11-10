@@ -1,0 +1,48 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Marcas</li>
+
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Marcas</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Proveedor</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @trademarks.each do |trademark| %>
+            <tr>
+              <td><%= trademark.name %></td>
+              <td>
+                <% if !trademark.provider.nil? %>      
+                  <a href="/providers/<%= trademark.provider.id %>"><%= trademark.provider %></a>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to((fa_icon "eye"), trademark) %>
+                <%= link_to((fa_icon "pencil"), edit_trademark_path(trademark)) %>
+                <%= link_to((fa_icon "trash-o"), trademark, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+<%= link_to 'Volver', :back, class: "btn btn-primary" %>
+<%= link_to 'Crear Marca', new_trademark_path, class: 'btn btn-primary' %>

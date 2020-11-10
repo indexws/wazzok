@@ -1,0 +1,42 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Talles</li>
+
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Tabla de Talles</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @sizes.each do |size| %>
+            <tr>
+              <td><%= size %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), size) %>
+                <%= link_to((fa_icon "pencil"), edit_size_path(size)) %>
+                <%= link_to((fa_icon "trash-o"), size, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+<%= link_to 'Volver', :back, class: "btn btn-primary" %>
+<%= link_to 'Crear Talle', new_size_path, class: 'btn btn-primary' %>

@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wazzok</title>
+    <title>Bellina52</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body id="page-top" class="<%= controller_name %> <%= action_name %>">
+    <% unless flash.empty? %>
+      <script type="text/javascript">
+        <% flash.each do |f| %>
+          <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+          toastr['<%= type %>']('<%= f[1] %>');
+        <% end %>
+      </script>
+    <% end %>
+    <%= render "layouts/navbar"%>
+    <div id="wrapper">
+      <% if user_signed_in? %>
+        <%= render "layouts/sidebar"%>
+      <% end %>  
+      <div class="container-fluid">
+        <%= yield %>  
+      </div>
+    </div>
   </body>
 </html>
+

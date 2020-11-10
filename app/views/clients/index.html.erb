@@ -1,0 +1,49 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Clientes</li>
+
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Clientes</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Dni</th>
+            <th>Nombre</th>
+            <th>Mail</th>
+            <th>Dirección</th>
+            <th>Saldo</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @clients.each do |client| %>
+            <tr>
+              <td><%= client.dni %></td>
+              <td><%= client.fullname %></td>
+              <td><%= client.mail %></td>
+              <td><%= client.address %></td>
+              <td><%= client.get_debt %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), client) %>
+                <%= link_to((fa_icon "pencil"), edit_client_path(client)) %>
+                <%= link_to((fa_icon "trash-o"), client, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+<%= link_to 'Volver', :back, class: "btn btn-primary" %>
+<%= link_to 'Crear Cliente', new_client_path, class: 'btn btn-primary' %>

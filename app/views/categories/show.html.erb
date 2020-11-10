@@ -1,0 +1,26 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=categories_path%>">Categorías</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @category.name %></li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @category.name %></div>
+    <div class="card-body">
+      <p>
+        <strong>Dni:</strong>
+        <%= @category.name %>
+      </p>
+
+      <p>
+        <strong>Fullname:</strong>
+        <%= @category.code %>
+      </p>
+    </div>
+  </div>
+</div>

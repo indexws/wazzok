@@ -1,0 +1,52 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Calzados</li>
+
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Calzados</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Sku</th>
+            <th>Artículo</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Inventario</th>
+            <th>Talle</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @footwears.each do |footwear| %>
+            <tr>
+              <td><%= footwear.sku %></td>
+              <td><%= footwear.article %></td>
+              <td><span class="dot" style="background-color:<%= footwear.color.hex_code %>;width:15px;height: 15px;"></span> <%= footwear.trademark %></td>
+              <td><%= footwear.category %></td>
+              <td><%= footwear.stock %></td>
+              <td><%= footwear.size %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), footwear) %>
+                <%= link_to((fa_icon "pencil"), edit_footwear_path(footwear)) %>
+                <%= link_to((fa_icon "trash-o"), footwear, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+<%= link_to 'Volver', colors_path, class: "btn btn-primary" %>
+<%= link_to 'Crear Calzado', new_footwear_path, class: 'btn btn-primary' %>

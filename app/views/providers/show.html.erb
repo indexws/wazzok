@@ -1,0 +1,35 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=providers_path%>">Proveedores</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @provider.name %></li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @provider.name %></div>
+    <div class="card-body">
+      <p>
+      <strong>Cuil:</strong>
+      <%= @provider.cuil %>
+    </p>
+
+    <p>
+      <strong>Telephone:</strong>
+      <%= @provider.telephone %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @provider.email %>
+    </p>
+      <div class="text-center">
+        <%= link_to 'Volver', :back, class: "btn btn-primary" %>
+        <%= link_to 'Editar', edit_provider_path(@provider), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

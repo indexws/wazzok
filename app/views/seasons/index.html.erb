@@ -1,0 +1,44 @@
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Temporadas</li>
+
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Temporadas</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Notas</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @seasons.each do |season| %>
+            <tr>
+              <td><%= season.name %></td>
+              <td><%= season.note %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), season) %>
+                <%= link_to((fa_icon "pencil"), edit_season_path(season)) %>
+                <%= link_to((fa_icon "trash-o"), season, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+<%= link_to 'Volver', :back, class: "btn btn-primary" %>
+<%= link_to 'Cargar Temporada', new_season_path, class: 'btn btn-primary' %>
